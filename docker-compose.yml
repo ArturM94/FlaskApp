@@ -1,0 +1,13 @@
+datastore:
+  image: postgres:10.4
+  ports:
+  - 5432:5432
+frontend:
+  build: .
+  command: python -u main.py
+  ports:
+  - 5000:5000
+  volumes:
+  - .:/todo
+  links:
+  - datastore
